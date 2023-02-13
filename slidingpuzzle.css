@@ -1,0 +1,43 @@
+html,body{
+    height: 100%;
+    line-height: normal;
+}
+
+header{
+    height: 120px;
+    padding: 10px;
+}
+
+main{
+    height: calc(100%-120px);
+}
+
+.frame{
+    width: 550px;
+    height: 550px;
+    border: 2px solid black;
+    border-radius: 5px;
+    margin: 0 auto;
+    padding: 23px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    justify-content: flex-start;
+}
+
+.number{
+    display: block;
+    width: 125px;
+    height: 125px;
+    border: 1px solid black;
+    color: black;
+    font-size: 30px;
+    text-align:center;
+    line-height:125px;
+}
+
+.number:hover{
+    background-color: orange;
+    text-decoration: none;
+    transform: translate(50px, 50px);
+}
