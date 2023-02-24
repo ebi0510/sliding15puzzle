@@ -12,7 +12,7 @@ main{
     height: calc(100%-120px);
 }
 
-.frame{
+table{
     width: 550px;
     height: 550px;
     border: 2px solid black;
@@ -25,8 +25,7 @@ main{
     justify-content: flex-start;
 }
 
-.number{
-    display: block;
+td{
     width: 125px;
     height: 125px;
     border: 1px solid black;
@@ -36,8 +35,7 @@ main{
     line-height:125px;
 }
 
-.number:hover{
+td:hover{
     background-color: orange;
     text-decoration: none;
-    transform: translate(50px, 50px);
 }
