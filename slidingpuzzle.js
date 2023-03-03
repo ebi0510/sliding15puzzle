@@ -50,7 +50,7 @@ for (var i=0; i < mytable.rows.length; i++) {
   for (var j=0; j < mytable.rows[i].cells.length; j++) {
     // rows.lengthは行(i)。cells.lengthは列(j)。
     // 縦横最大値まで繰り返す。
-    mytable.rows[i].cells[j].id = i + "-" + j;
+    mytable.rows[i].cells[j].id = (i+1) + "-" + (j+1);
     // mytable上のi行j列idは i - j とする
     mytable.rows[i].cells[j].onclick = clicked;
     // mytable上のi行j列idがクリックされたら、clicked関数を動作させる
