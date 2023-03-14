@@ -45,23 +45,165 @@
 
 var mytable = document.getElementById("tbl");
 // tbl内のデータを参照する（getElementById＝id内のデータを参照する）
- 
+
 for (var i=0; i < mytable.rows.length; i++) {
   for (var j=0; j < mytable.rows[i].cells.length; j++) {
     // rows.lengthは行(i)。cells.lengthは列(j)。
     // 縦横最大値まで繰り返す。
-    mytable.rows[i].cells[j].id = (i+1) + "-" + (j+1);
+    mytable.rows[i].cells[j].id = `${i+1},${j+1}`;
     // mytable上のi行j列idは i - j とする
+    // idはHTMLに指定しなくてもある項目だが、空欄（指定なし）か指定ありかは場合による
+    // rows[i],cells[j]のidを書き換えている状態
+    // idはテキストのみ数字はできない。配列を使うと、勝手にテキストに変換してる
     mytable.rows[i].cells[j].onclick = clicked;
     // mytable上のi行j列idがクリックされたら、clicked関数を動作させる
   }
 }
- 
+
+
 function clicked(e) {
-  alert(`${e.target.id}がクリックされました。値は：${e.target.innerHTML}`);
+  if(e.target.id == "1,1"){
+    var top = "なし";
+    var a = document.getElementById(top);
+    var left = "なし";
+    var b = document.getElementById(left);
+    var right = "1,2";
+    var c = document.getElementById(right);
+    var under = "2,1";
+    var d = document.getElementById(under);
+  }else if(e.target.id == "1,2"){
+    var top = "なし";
+    var left = "1,1";
+    var b = document.getElementById(left);
+    var right = "1,3";
+    var c = document.getElementById(right);
+    var under = "2,2";    
+    var d = document.getElementById(under);
+  }else if(e.target.id == "1,3"){
+    var top = "なし";
+    var left = "1,2";
+    var b = document.getElementById(left);
+    var right = "1,4";
+    var c = document.getElementById(right);
+    var under = "2,3";       
+    var d = document.getElementById(under);
+  }else if(e.target.id == "1,4"){
+    var top = "なし";
+    var left = "1,3";
+    var b = document.getElementById(left);
+    var right = "なし";
+    var under = "2,4";        
+    var d = document.getElementById(under);
+  }else if(e.target.id == "2,1"){
+    var top = "1,1";
+    var a = document.getElementById(top);
+    var left = "なし";
+    var right = "2,2";
+    var c = document.getElementById(right);
+    var under = "3,1";        
+    var d = document.getElementById(under);
+  }else if(e.target.id == "2,2"){
+    var top = "1,2";
+    var a = document.getElementById(top);
+    var left = "2,1";
+    var b = document.getElementById(left);
+    var right = "2,3";
+    var c = document.getElementById(right);
+    var under = "3,2";        
+    var d = document.getElementById(under);
+  }else if(e.target.id == "2,3"){
+    var top = "1,3";
+    var a = document.getElementById(top);
+    var left = "2,2";
+    var b = document.getElementById(left);
+    var right = "2,4";
+    var c = document.getElementById(right);
+    var under = "3,3";        
+    var d = document.getElementById(under);
+  }else if(e.target.id == "2,4"){
+    var top = "1,4";
+    var a = document.getElementById(top);
+    var left = "2,3";
+    var b = document.getElementById(left);
+    var right = "なし";
+    var under = "3,4";        
+    var d = document.getElementById(under);
+  }else if(e.target.id == "3,1"){
+    var top = "2,1";
+    var a = document.getElementById(top);
+    var left = "なし";
+    var right = "3,2";
+    var c = document.getElementById(right);
+    var under = "4,1";        
+    var d = document.getElementById(under);
+  }else if(e.target.id == "3,2"){
+    var top = "2,2";
+    var a = document.getElementById(top);
+    var left = "3,1";
+    var b = document.getElementById(left);
+    var right = "3,3";
+    var c = document.getElementById(right);
+    var under = "4,3";        
+    var d = document.getElementById(under);
+  }else if(e.target.id == "3,3"){
+    var top = "2,3";
+    var a = document.getElementById(top);
+    var left = "3,2";
+    var b = document.getElementById(left);
+    var right = "3,4";
+    var c = document.getElementById(right);
+    var under = "4,3";        
+    var d = document.getElementById(under);
+  }else if(e.target.id == "3,4"){
+    var top = "2,4";
+    var a = document.getElementById(top);
+    var left = "3,3";
+    var b = document.getElementById(left);
+    var right = "なし";
+    var under = "4,4";        
+    var d = document.getElementById(under);
+  }else if(e.target.id == "4,1"){
+    var top = "3,1";
+    var a = document.getElementById(top);
+    var left = "なし";
+    var right = "4,2";
+    var c = document.getElementById(right);
+    var under = "なし";       
+  }else if(e.target.id == "4,2"){
+    var top = "3,2";
+    var a = document.getElementById(top);
+    var left = "4,1";
+    var b = document.getElementById(left);
+    var right = "4,3";
+    var c = document.getElementById(right);
+    var under = "なし";        
+  }else if(e.target.id == "4,3"){
+    var top = "3,3";
+    var a = document.getElementById(top);
+    var left = "4,2";
+    var b = document.getElementById(left);
+    var right = "4,4";
+    var c = document.getElementById(right);
+    var under = "なし";         
+  }else if(e.target.id == "4,4"){
+    var top = "3,4";
+    var a = document.getElementById(top);
+    var left = "4,3";
+    var b = document.getElementById(left);
+    var right = "なし";
+    var under = "なし";        
+  }
+  // クリックしたマスに対して周囲4マスを見に行き、空のマスを探す
+  // 16個全部一回書いてみる
+  // 4パターンに収束するはず。外周を検出するとキレイなIF文になる
+  // パズルを動かしてモチベ保とう
+  alert(`${e.target.id}がクリックされました。値は：${e.target.innerHTML}。上は：${top}（${a.innerHTML}）。左は${left}（${b.innerHTML}）。右は${right}（${c.innerHTML}）。下は${under}（${d.innerHTML}）`);
 }
+// ${e.target.id}は文字。
 // target=イベントが行われたオブジェクトを参照できる。
 // innerHTML=要素内のHTMLを取得できる（target内のHTMLを取得）
+// eにはイベント関数で取得した情報が全部詰まってる。どこクリックしたのか、ダブルクリックなのか、右クリック7日とか。ここが空欄だと何も入らない
+// 複数のイベント関数があったら、最後のものがeに入る
 
 // 参考：JavaScriptのtableのクリックしたセルと行を取得する
 // https://pg-happy.jp/javascript-table.html#:~:text=%E4%BB%A5%E4%B8%8B%E3%81%AE%E3%81%A8%E3%81%8A%E3%82%8A%E3%80%82-,JavaScript%E3%81%AEtable%E3%81%AE%E3%82%AF%E3%83%AA%E3%83%83%E3%82%AF%E3%81%97%E3%81%9F%E3%82%BB%E3%83%AB%E3%81%A8%E8%A1%8C%E3%82%92%E5%8F%96%E5%BE%97%E3%81%99%E3%82%8B,-%E5%A4%9A%E5%88%86%E6%96%B9%E6%B3%95%E3%81%AF
