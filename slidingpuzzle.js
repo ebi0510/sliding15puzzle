@@ -61,18 +61,39 @@ for (var i=0; i < mytable.rows.length; i++) {
 }
 
 
+function topCheck(){if(document.getElementById(top)=null){
+  top = top_a;
+  top_a = "なし";
+}}
+
+function leftCheck(){if(document.getElementById(left)=null){
+  left = left_b;
+  left_b = "なし";
+}}
+
+function rightCheck(){if(document.getElementById(right)=nul){
+  right = right_c;
+  right_c ="なし";
+}}
+
+function underCheck(){if(document.getElementById(under)=null){
+  under = under_d;
+  under_d = "なし";
+}}
+
 function clicked(e) {
   if(e.target.id == "1,1"){
     var top = "なし";
-    var a = document.getElementById(top);
+    var a = document.getElementById(top)  ?? "なし";
     var left = "なし";
-    var b = document.getElementById(left);
+    var b = document.getElementById(left)  ?? "なし";
     var right = "1,2";
-    var c = document.getElementById(right);
+    var c = document.getElementById(right)  ?? "なし";
     var under = "2,1";
-    var d = document.getElementById(under);
+    var d = document.getElementById(under)  ?? "なし";
   }else if(e.target.id == "1,2"){
     var top = "なし";
+    var a = document.getElementById(top);
     var left = "1,1";
     var b = document.getElementById(left);
     var right = "1,3";
@@ -81,6 +102,7 @@ function clicked(e) {
     var d = document.getElementById(under);
   }else if(e.target.id == "1,3"){
     var top = "なし";
+    var a = document.getElementById(top);
     var left = "1,2";
     var b = document.getElementById(left);
     var right = "1,4";
@@ -89,15 +111,18 @@ function clicked(e) {
     var d = document.getElementById(under);
   }else if(e.target.id == "1,4"){
     var top = "なし";
+    var a = document.getElementById(top);
     var left = "1,3";
     var b = document.getElementById(left);
     var right = "なし";
+    var c = document.getElementById(right);
     var under = "2,4";        
     var d = document.getElementById(under);
   }else if(e.target.id == "2,1"){
     var top = "1,1";
     var a = document.getElementById(top);
     var left = "なし";
+    var b = document.getElementById(left);
     var right = "2,2";
     var c = document.getElementById(right);
     var under = "3,1";        
@@ -126,12 +151,14 @@ function clicked(e) {
     var left = "2,3";
     var b = document.getElementById(left);
     var right = "なし";
+    var c = document.getElementById(right);
     var under = "3,4";        
     var d = document.getElementById(under);
   }else if(e.target.id == "3,1"){
     var top = "2,1";
     var a = document.getElementById(top);
     var left = "なし";
+    var b = document.getElementById(left);
     var right = "3,2";
     var c = document.getElementById(right);
     var under = "4,1";        
@@ -160,15 +187,18 @@ function clicked(e) {
     var left = "3,3";
     var b = document.getElementById(left);
     var right = "なし";
+    var c = document.getElementById(right);
     var under = "4,4";        
     var d = document.getElementById(under);
   }else if(e.target.id == "4,1"){
     var top = "3,1";
     var a = document.getElementById(top);
     var left = "なし";
+    var b = document.getElementById(left);
     var right = "4,2";
     var c = document.getElementById(right);
     var under = "なし";       
+    var d = document.getElementById(under);
   }else if(e.target.id == "4,2"){
     var top = "3,2";
     var a = document.getElementById(top);
@@ -177,6 +207,7 @@ function clicked(e) {
     var right = "4,3";
     var c = document.getElementById(right);
     var under = "なし";        
+    var d = document.getElementById(under);
   }else if(e.target.id == "4,3"){
     var top = "3,3";
     var a = document.getElementById(top);
@@ -185,13 +216,16 @@ function clicked(e) {
     var right = "4,4";
     var c = document.getElementById(right);
     var under = "なし";         
+    var d = document.getElementById(under);
   }else if(e.target.id == "4,4"){
     var top = "3,4";
     var a = document.getElementById(top);
     var left = "4,3";
     var b = document.getElementById(left);
     var right = "なし";
+    var c = document.getElementById(right);
     var under = "なし";        
+    var d = document.getElementById(under);
   }
   // クリックしたマスに対して周囲4マスを見に行き、空のマスを探す
   // 16個全部一回書いてみる
