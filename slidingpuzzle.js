@@ -18,14 +18,11 @@ const shuffleArray = array => {
 //   console.log(arr);
 
 // arrayがクリック時に動いているのか？
-const array = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,'',15];
-// shuffleArray(array);
-$('#tbl').append(`<tr><td>${array[0]}</td><td>${array[1]}</td><td>${array[2]}</td><td>${array[3]}</td></tr><tr><td>${array[4]}</td><td>${array[5]}</td><td>${array[6]}</td><td>${array[7]}</td></tr><tr><td>${array[8]}</td><td>${array[9]}</td><td>${array[10]}</td><td>${array[11]}</td></tr><tr><td>${array[12]}</td><td>${array[13]}</td><td>${array[14]}</td><td>${array[15]}</td></tr>`);
 
-let diff = [];
-
-
-
+const array = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,''];
+shuffleArray(array);
+$('#tbl').append(`<tr><td id="1-1">${array[0]}</td><td id="1-2">${array[1]}</td><td id="1-3">${array[2]}</td><td id="1-4">${array[3]}</td></tr><tr><td id="2-1">${array[4]}</td><td id="2-2">${array[5]}</td><td id="2-3">${array[6]}</td><td id="2-4">${array[7]}</td></tr><tr><td id="3-1">${array[8]}</td><td id="3-2">${array[9]}</td><td id="3-3">${array[10]}</td><td id="3-4">${array[11]}</td></tr><tr><td id="4-1">${array[12]}</td><td id="4-2">${array[13]}</td><td id="4-3">${array[14]}</td><td id="4-4">${array[15]}</td></tr>`);
+// arrayとappend（HTML)は必ずイコールになってるのか？パズルを動かした後にデベロッパーツールでチェックする。
 // 格子状のマス目番号の取得https://dianxnao.com/javascript%EF%BC%9A%E3%82%AF%E3%83%AA%E3%83%83%E3%82%AF%E3%81%A7%E6%A0%BC%E5%AD%90%E7%8A%B6%E3%81%AE%E3%83%9E%E3%82%B9%E7%9B%AE%E7%95%AA%E5%8F%B7%E3%82%92%E5%8F%96%E5%BE%97%E3%81%99%E3%82%8B/
 
 var mytable = document.getElementById("tbl");
@@ -191,6 +188,7 @@ function clicked(e) {
     var under = "なし";        
     var d = document.getElementById(under);
   }
+
   // クリックしたマスに対して周囲4マスを見に行き、空のマスを探す
   // 16個全部一回書いてみる
   // 4パターンに収束するはず。外周を検出するとキレイなIF文になる
@@ -211,26 +209,24 @@ function clicked(e) {
     e.target.innerHTML = "";
   }
 
-  // クリック後に毎回動かす
+  const newArray = [first1.innerHTML,first2.innerHTML,first3.innerHTML,first4.innerHTML,second1.innerHTML,second2.innerHTML,second3.innerHTML,second4.innerHTML,third1.innerHTML,third2.innerHTML,third3.innerHTML,third4.innerHTML,fourth1.innerHTML,fourth2.innerHTML,fourth3.innerHTML,fourth4.innerHTML]
+  $('#tbl').insertAdjacentHTML(`<tr><td>${first1.innerHTML}</td><td>${first2.innerHTML}</td><td>${first3.innerHTML}</td><td>${first4.innerHTML}</td></tr><tr><td>${second1.innerHTML}</td><td>${second2.innerHTML}</td><td>${second3.innerHTML}</td><td>${second4.innerHTML}</td></tr><tr><td>${third1.innerHTML}</td><td>${third2.innerHTML}</td><td>${third3.innerHTML}</td><td>${third4.innerHTML}</td></tr><tr><td>${fourth1.innerHTML}</td><td>${fourth2.innerHTML}</td><td>${fourth3.innerHTML}</td><td>${fourth4.innerHTML}}</td></tr>`);
+
+// クリック後に毎回動かす
 // 30〜35を消すとなぜ動かないか
 setTimeout(()=>{
   for(let i = 1 ; i < 15 ; i++){
-  const anser = array[i] - array[i-1];
-  diff[i] = anser[i];
-  if(anser != 1){
+    const answer = array[i] - array[i-1];
+    if(answer != 1){
       // anser != 1に当てはまらなかったら強制終了
       console.log("まだ続く");
-      break;
-  }else{
-    console.log(diff.length);
-    console.log(array[i],array[i-1],anser);
-    if(diff.length == 14){
-      alert("終わり");
-      // console.logの結果は他の関数から見れないので、別の書き方に置き換える必要がある
-      break;
+      return;
     }
   }
-}},10);
+    alert("クリア")
+},0);
+// for文が全部回ると順番、中断すると順番じゃないのがなんでなのか調べる。
+// 0だと前処理終わった直後に処理する。同時にはならない。（イベントループ）
 // 1.23〜31行目までを関数化する
 // 2.関数を中断する方法。process.exit(-1);（これは強制終了）以外の方法
 }
