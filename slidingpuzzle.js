@@ -25,6 +25,23 @@ $('#tbl').append(`<tr><td id="1-1">${array[0]}</td><td id="1-2">${array[1]}</td>
 // arrayとappend（HTML)は必ずイコールになってるのか？パズルを動かした後にデベロッパーツールでチェックする。
 // 格子状のマス目番号の取得https://dianxnao.com/javascript%EF%BC%9A%E3%82%AF%E3%83%AA%E3%83%83%E3%82%AF%E3%81%A7%E6%A0%BC%E5%AD%90%E7%8A%B6%E3%81%AE%E3%83%9E%E3%82%B9%E7%9B%AE%E7%95%AA%E5%8F%B7%E3%82%92%E5%8F%96%E5%BE%97%E3%81%99%E3%82%8B/
 
+const first1 = document.getElementById("1-1")
+const first2 = document.getElementById("1-2")
+const first3 = document.getElementById("1-3")
+const first4 = document.getElementById("1-4")
+const second1 = document.getElementById("2-1")
+const second2 = document.getElementById("2-2")
+const second3 = document.getElementById("2-3")
+const second4 = document.getElementById("2-4")
+const third1 = document.getElementById("3-1")
+const third2 = document.getElementById("3-2")
+const third3 = document.getElementById("3-3")
+const third4 = document.getElementById("3-4")
+const fourth1 = document.getElementById("4-1")
+const fourth2 = document.getElementById("4-2")
+const fourth3 = document.getElementById("4-3")
+const fourth4 = document.getElementById("4-4")
+
 var mytable = document.getElementById("tbl");
 // tbl内のデータを参照する（getElementById＝id内のデータを参照する）
 
@@ -209,26 +226,25 @@ function clicked(e) {
     e.target.innerHTML = "";
   }
 
-  const newArray = [first1.innerHTML,first2.innerHTML,first3.innerHTML,first4.innerHTML,second1.innerHTML,second2.innerHTML,second3.innerHTML,second4.innerHTML,third1.innerHTML,third2.innerHTML,third3.innerHTML,third4.innerHTML,fourth1.innerHTML,fourth2.innerHTML,fourth3.innerHTML,fourth4.innerHTML]
-  $('#tbl').insertAdjacentHTML(`<tr><td>${first1.innerHTML}</td><td>${first2.innerHTML}</td><td>${first3.innerHTML}</td><td>${first4.innerHTML}</td></tr><tr><td>${second1.innerHTML}</td><td>${second2.innerHTML}</td><td>${second3.innerHTML}</td><td>${second4.innerHTML}</td></tr><tr><td>${third1.innerHTML}</td><td>${third2.innerHTML}</td><td>${third3.innerHTML}</td><td>${third4.innerHTML}</td></tr><tr><td>${fourth1.innerHTML}</td><td>${fourth2.innerHTML}</td><td>${fourth3.innerHTML}</td><td>${fourth4.innerHTML}}</td></tr>`);
-
 // クリック後に毎回動かす
 // 30〜35を消すとなぜ動かないか
 setTimeout(()=>{
   for(let i = 1 ; i < 15 ; i++){
-    const answer = array[i] - array[i-1];
+    const answer = newArray[i] - newArray[i-1];
     if(answer != 1){
       // anser != 1に当てはまらなかったら強制終了
       console.log("まだ続く");
       return;
     }
   }
-    alert("クリア")
+    alert("おわり")
 },0);
 // for文が全部回ると順番、中断すると順番じゃないのがなんでなのか調べる。
 // 0だと前処理終わった直後に処理する。同時にはならない。（イベントループ）
 // 1.23〜31行目までを関数化する
 // 2.関数を中断する方法。process.exit(-1);（これは強制終了）以外の方法
+  const newArray = [first1.innerHTML,first2.innerHTML,first3.innerHTML,first4.innerHTML,second1.innerHTML,second2.innerHTML,second3.innerHTML,second4.innerHTML,third1.innerHTML,third2.innerHTML,third3.innerHTML,third4.innerHTML,fourth1.innerHTML,fourth2.innerHTML,fourth3.innerHTML,fourth4.innerHTML];
+  mytable.innerHTML=`<tr><td>${newArray[0]}</td><td>${newArray[1]}</td><td>${newArray[2]}</td><td>${newArray[3]}</td></tr><tr><td>${newArray[4]}</td><td>${newArray[5]}</td><td>${newArray[6]}</td><td>${newArray[7]}</td></tr><tr><td>${newArray[8]}</td><td>${newArray[9]}</td><td>${newArray[10]}</td><td>${newArray[11]}</td></tr><tr><td>${newArray[12]}</td><td>${newArray[13]}</td><td>${newArray[14]}</td><td>${newArray[15]}</td></tr>`;
 }
 // ${e.target.id}は文字。
 // target=イベントが行われたオブジェクトを参照できる。
