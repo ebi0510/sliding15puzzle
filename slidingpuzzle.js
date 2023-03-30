@@ -17,30 +17,14 @@ const shuffleArray = array => {
 //   shuffleArray(arr);
 //   console.log(arr);
 
-const array = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,''];
-shuffleArray(array);
+// arrayがクリック時に動いているのか？
+const array = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,'',15];
+// shuffleArray(array);
 $('#tbl').append(`<tr><td>${array[0]}</td><td>${array[1]}</td><td>${array[2]}</td><td>${array[3]}</td></tr><tr><td>${array[4]}</td><td>${array[5]}</td><td>${array[6]}</td><td>${array[7]}</td></tr><tr><td>${array[8]}</td><td>${array[9]}</td><td>${array[10]}</td><td>${array[11]}</td></tr><tr><td>${array[12]}</td><td>${array[13]}</td><td>${array[14]}</td><td>${array[15]}</td></tr>`);
 
-// let diff = [];
+let diff = [];
 
-// for(let i = 1 ; i < 15 ; i++){
-//     const anser = array[i] - array[i-1];
-//     diff[i] = anser[i];
-//     if(diff.length == 15){
-//         // anser != 1に当てはまらなかったら強制終了
-//         return false;
-//     }else{
-//       console.log(diff.length);
-//       console.log(array[i],array[i-1],anser);
-//       if(diff.length == 15){
-//         alert("終わり");
-//         // console.logの結果は他の関数から見れないので、別の書き方に置き換える必要がある
-//         break;
-//       }
-//     }
-// }
-// 1.23〜31行目までを関数化する
-// 2.関数を中断する方法。process.exit(-1);（これは強制終了）以外の方法
+
 
 // 格子状のマス目番号の取得https://dianxnao.com/javascript%EF%BC%9A%E3%82%AF%E3%83%AA%E3%83%83%E3%82%AF%E3%81%A7%E6%A0%BC%E5%AD%90%E7%8A%B6%E3%81%AE%E3%83%9E%E3%82%B9%E7%9B%AE%E7%95%AA%E5%8F%B7%E3%82%92%E5%8F%96%E5%BE%97%E3%81%99%E3%82%8B/
 
@@ -150,7 +134,7 @@ function clicked(e) {
     var b = document.getElementById(left);
     var right = "3,3";
     var c = document.getElementById(right);
-    var under = "4,3";        
+    var under = "4,2";        
     var d = document.getElementById(under);
   }else if(e.target.id == "3,3"){
     var top = "2,3";
@@ -226,6 +210,29 @@ function clicked(e) {
     d.innerHTML = e.target.innerHTML;
     e.target.innerHTML = "";
   }
+
+  // クリック後に毎回動かす
+// 30〜35を消すとなぜ動かないか
+setTimeout(()=>{
+  for(let i = 1 ; i < 15 ; i++){
+  const anser = array[i] - array[i-1];
+  diff[i] = anser[i];
+  if(anser != 1){
+      // anser != 1に当てはまらなかったら強制終了
+      console.log("まだ続く");
+      break;
+  }else{
+    console.log(diff.length);
+    console.log(array[i],array[i-1],anser);
+    if(diff.length == 14){
+      alert("終わり");
+      // console.logの結果は他の関数から見れないので、別の書き方に置き換える必要がある
+      break;
+    }
+  }
+}},10);
+// 1.23〜31行目までを関数化する
+// 2.関数を中断する方法。process.exit(-1);（これは強制終了）以外の方法
 }
 // ${e.target.id}は文字。
 // target=イベントが行われたオブジェクトを参照できる。
