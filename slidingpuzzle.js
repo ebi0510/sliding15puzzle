@@ -25,25 +25,26 @@ $('#tbl').append(`<tr><td id="1-1">${array[0]}</td><td id="1-2">${array[1]}</td>
 // arrayとappend（HTML)は必ずイコールになってるのか？パズルを動かした後にデベロッパーツールでチェックする。
 // 格子状のマス目番号の取得https://dianxnao.com/javascript%EF%BC%9A%E3%82%AF%E3%83%AA%E3%83%83%E3%82%AF%E3%81%A7%E6%A0%BC%E5%AD%90%E7%8A%B6%E3%81%AE%E3%83%9E%E3%82%B9%E7%9B%AE%E7%95%AA%E5%8F%B7%E3%82%92%E5%8F%96%E5%BE%97%E3%81%99%E3%82%8B/
 
-const first1 = document.getElementById("1-1")
-const first2 = document.getElementById("1-2")
-const first3 = document.getElementById("1-3")
-const first4 = document.getElementById("1-4")
-const second1 = document.getElementById("2-1")
-const second2 = document.getElementById("2-2")
-const second3 = document.getElementById("2-3")
-const second4 = document.getElementById("2-4")
-const third1 = document.getElementById("3-1")
-const third2 = document.getElementById("3-2")
-const third3 = document.getElementById("3-3")
-const third4 = document.getElementById("3-4")
-const fourth1 = document.getElementById("4-1")
-const fourth2 = document.getElementById("4-2")
-const fourth3 = document.getElementById("4-3")
-const fourth4 = document.getElementById("4-4")
+// const first1 = document.getElementById("1-1")
+// const first2 = document.getElementById("1-2")
+// const first3 = document.getElementById("1-3")
+// const first4 = document.getElementById("1-4")
+// const second1 = document.getElementById("2-1")
+// const second2 = document.getElementById("2-2")
+// const second3 = document.getElementById("2-3")
+// const second4 = document.getElementById("2-4")
+// const third1 = document.getElementById("3-1")
+// const third2 = document.getElementById("3-2")
+// const third3 = document.getElementById("3-3")
+// const third4 = document.getElementById("3-4")
+// const fourth1 = document.getElementById("4-1")
+// const fourth2 = document.getElementById("4-2")
+// const fourth3 = document.getElementById("4-3")
+// const fourth4 = document.getElementById("4-4")
 
 var mytable = document.getElementById("tbl");
 // tbl内のデータを参照する（getElementById＝id内のデータを参照する）
+// HTMLelement||null　はどっちかの結果になるよって意味
 
 for (var i=0; i < mytable.rows.length; i++) {
   for (var j=0; j < mytable.rows[i].cells.length; j++) {
@@ -54,6 +55,7 @@ for (var i=0; i < mytable.rows.length; i++) {
     // idはHTMLに指定しなくてもある項目だが、空欄（指定なし）か指定ありかは場合による
     // rows[i],cells[j]のidを書き換えている状態
     // idはテキストのみ数字はできない。配列を使うと、勝手にテキストに変換してる
+
     mytable.rows[i].cells[j].onclick = clicked;
     // mytable上のi行j列idがクリックされたら、clicked関数を動作させる
   }
@@ -224,7 +226,7 @@ function clicked(e) {
   }else if(d?.innerHTML == ""){
     d.innerHTML = e.target.innerHTML;
     e.target.innerHTML = "";
-  }
+  };
 
 // クリック後に毎回動かす
 // 30〜35を消すとなぜ動かないか
@@ -239,12 +241,49 @@ setTimeout(()=>{
   }
     alert("おわり")
 },0);
+// クリア判定が動かない理由を検証する。変数のスコープを確認する。
 // for文が全部回ると順番、中断すると順番じゃないのがなんでなのか調べる。
 // 0だと前処理終わった直後に処理する。同時にはならない。（イベントループ）
 // 1.23〜31行目までを関数化する
 // 2.関数を中断する方法。process.exit(-1);（これは強制終了）以外の方法
+
+  const first1 = document.getElementById("1-1")
+  const first2 = document.getElementById("1-2")
+  const first3 = document.getElementById("1-3")
+  const first4 = document.getElementById("1-4")
+  const second1 = document.getElementById("2-1")
+  const second2 = document.getElementById("2-2")
+  const second3 = document.getElementById("2-3")
+  const second4 = document.getElementById("2-4")
+  const third1 = document.getElementById("3-1")
+  const third2 = document.getElementById("3-2")
+  const third3 = document.getElementById("3-3")
+  const third4 = document.getElementById("3-4")
+  const fourth1 = document.getElementById("4-1")
+  const fourth2 = document.getElementById("4-2")
+  const fourth3 = document.getElementById("4-3")
+  const fourth4 = document.getElementById("4-4")
+
   const newArray = [first1.innerHTML,first2.innerHTML,first3.innerHTML,first4.innerHTML,second1.innerHTML,second2.innerHTML,second3.innerHTML,second4.innerHTML,third1.innerHTML,third2.innerHTML,third3.innerHTML,third4.innerHTML,fourth1.innerHTML,fourth2.innerHTML,fourth3.innerHTML,fourth4.innerHTML];
-  mytable.innerHTML=`<tr><td>${newArray[0]}</td><td>${newArray[1]}</td><td>${newArray[2]}</td><td>${newArray[3]}</td></tr><tr><td>${newArray[4]}</td><td>${newArray[5]}</td><td>${newArray[6]}</td><td>${newArray[7]}</td></tr><tr><td>${newArray[8]}</td><td>${newArray[9]}</td><td>${newArray[10]}</td><td>${newArray[11]}</td></tr><tr><td>${newArray[12]}</td><td>${newArray[13]}</td><td>${newArray[14]}</td><td>${newArray[15]}</td></tr>`;
+  mytable.innerHTML=`<tr><td>${newArray[0]}</td><td>${newArray[1]}</td><td>${newArray[2]}</td><td>${newArray[3]}</td></tr><tr><td>${newArray[4]}</td><td>${newArray[5]}</td><td>${newArray[6]}</td><td>${newArray[7]}</td></tr><tr><td>${newArray[8]}</td><td>${newArray[9]}</td><td>${newArray[10]}</td><td>${newArray[11]}</td></tr><tr><td>${newArray[12]}</td><td>${newArray[13]}</td><td>${newArray[14]}</td><td>${newArray[15]}</td><tr>`;
+
+  // var mytable = document.getElementById("tbl");
+// tbl内のデータを参照する（getElementById＝id内のデータを参照する）
+
+for (var i=0; i < mytable.rows.length; i++) {
+  for (var j=0; j < mytable.rows[i].cells.length; j++) {
+    console.log("ああ");
+    // rows.lengthは行(i)。cells.lengthは列(j)。
+    // 縦横最大値まで繰り返す。
+    mytable.rows[i].cells[j].id = `${i+1},${j+1}`;
+    // mytable上のi行j列idは i - j とする
+    // idはHTMLに指定しなくてもある項目だが、空欄（指定なし）か指定ありかは場合による
+    // rows[i],cells[j]のidを書き換えている状態
+    // idはテキストのみ数字はできない。配列を使うと、勝手にテキストに変換してる
+    mytable.rows[i].cells[j].onclick = clicked;
+    // mytable上のi行j列idがクリックされたら、clicked関数を動作させる
+  }
+}
 }
 // ${e.target.id}は文字。
 // target=イベントが行われたオブジェクトを参照できる。
